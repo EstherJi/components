@@ -30,3 +30,15 @@ new Swiper().init({
 })
 
 ```
+
+#### Select下拉框组件
+
+代码示例：
+```
+new Select().init({
+	showSearch: true,  // 可选，默认false
+	onSearch: function(el){     // showSearch为true时使用，返回当前input对象
+		console.info(el)
+	}
+})
+```
