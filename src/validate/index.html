@@ -29,12 +29,25 @@
                 <input type="password" class="valid" id="confirmPwd" prop="confirmPwd">
             </div>
             <div class="pz-form-item">
+                <span class="label">城市</span>
+                <div class="pz-select">
+                    <input type="text" class="pz-select-input valid" id="city" prop="city" readonly>
+                    <span class="arrow"></span>
+                    <ul class="pz-select-dropdown">
+                        <li class="pz-select-dropdown-item" data-value="SZ">深圳</li>
+                        <li class="pz-select-dropdown-item" data-value="DG">东莞</li>
+                        <li class="pz-select-dropdown-item" data-value="GZ">广州</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pz-form-item">
                 <a class="pz-btn pz-submit-btn">确定</a>
                 <a class="pz-btn pz-cancel-btn">取消</a>                
             </div>
         </div>
-
-        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> 
+        <script src="../select/index.js"></script>       
         <script src="index.js"></script>
 
         <script>
@@ -43,7 +56,8 @@
                 mobile: { nullMsg: '手机号码不能为空', errorMsg: '手机号码格式错误' },
                 code: { nullMsg: '验证码不能为空', errorMsg: '验证码格式错误' },
                 password: { nullMsg: '密码不能为空', errorMsg: '密码格式不正确' },
-                confirmPwd: { nullMsg: '确认密码不能为空', errorMsg: '两次输入密码不一致', recheck: 'password' }
+                confirmPwd: { nullMsg: '确认密码不能为空', errorMsg: '两次输入密码不一致', recheck: 'password' },
+                city: { nullMsg: '请选择城市' }
             }
 
             var pzFrom = new Validate().init({
@@ -52,7 +66,7 @@
             })
 
             $('.pz-submit-btn').on('click', function(){
-                var form = pzFrom.formCheck();
+                var form = pzFrom.validateForm();
                 console.info(form)
 
                 // 校验单个，传id

@@ -64,6 +64,8 @@ Validate.prototype = {
             targetVal = target.obj.val(),
             result = true;
 
+        console.info(target.obj.attr('data-value'))
+
         if(targetVal){
             if(target.recheck){
                 $.each(this.eles, function(index, val){
@@ -82,10 +84,11 @@ Validate.prototype = {
         }
 
         if(!result){
-            target.obj.parent().addClass(this.option.errorClass).append(target.objTip);
+            target.obj.addClass(this.option.errorClass);
             target.objTip.fadeIn(200);
+            target.obj.parent().append(target.objTip);            
         }else{
-            target.obj.parent().removeClass(this.option.errorClass);
+            target.obj.removeClass(this.option.errorClass);
             target.objTip.remove();
         }
 
@@ -116,7 +119,7 @@ Validate.prototype = {
         return result;
     },
 
-    formCheck: function(){
+    validateForm: function(){
         var self = this,
             form = {},
             result = true;
@@ -134,7 +137,7 @@ Validate.prototype = {
 
     resetFields: function(){
         for(var i = 0; i < this.eles.length; i++){
-            this.eles[i].obj.parent().removeClass(this.option.errorClass);
+            this.eles[i].obj.removeClass(this.option.errorClass);
             this.eles[i].obj.val('');
             this.eles[i].objTip.remove();
         }
