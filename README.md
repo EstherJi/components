@@ -2,7 +2,7 @@
 ### 一些适用于pc或wap端的常用组件
 
 
-#### Swiper轮播
+#### [Swiper轮播](https://estherji.github.io/components/src/swiper/swiper.html)
 
 - swiper.js适用于pc
 - swiper-mobile.js适用于移动端，主要用于touch事件，adapt.js为rem适配代码
@@ -31,7 +31,7 @@ new Swiper().init({
 
 ```
 
-#### Select下拉框
+#### [Select下拉框](https://estherji.github.io/components/src/select/index.html)
 
 代码示例：
 ```
@@ -43,7 +43,7 @@ new Select().init({
 })
 ```
 
-#### Validate表单验证
+#### [Validate表单验证](https://estherji.github.io/components/src/validate/index.html)
 
 ```
 <input type="text" class="valid" id="name" prop="name">  <!-- class默认为valid，id自定义，prop与rules中key对应 -->
