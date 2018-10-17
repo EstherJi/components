@@ -1,0 +1,21 @@
+
+* { margin: 0; padding: 0; }
+body { font: 14px/1.5 'Microsoft Yahei'; color: rgba(0, 0, 0, .65); }
+ul, li { list-style: none; }
+div { box-sizing: border-box; }
+input, select { outline: none; }
+
+.pz-form { margin: 30px auto; width: 500px; padding: 20px 10px; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1); }
+.pz-form .pz-form-item { margin-bottom: 15px; font-size: 0; }
+.pz-form .pz-form-item .label { display: inline-block; padding-right: 10px; width: 100px; line-height: 30px; font-size: 14px; text-align: right; }
+.pz-form .pz-form-item input { padding-left: 10px; width: 200px; height: 30px; border: 1px solid #d9d9d9; border-radius: 4px; font-size: 14px; }
+.pz-form .pz-form-item input:focus { border-color: #40a9ff; box-shadow: 0 0 0 2px rgba(24, 144, 255, .2); }
+.pz-form .pz-form-item .pz-btn { display: inline-block; width: 80px; height: 30px; line-height: 30px; font-size: 14px; border: 1px solid #d9d9d9; border-radius: 4px; text-align: center; cursor: pointer; }
+.pz-form .pz-form-item .pz-btn + .pz-btn { margin-left: 10px; }
+.pz-form .pz-form-item .pz-btn:first-child { margin-left: 110px; }
+.pz-form .pz-form-item .pz-submit-btn { color: #fff; background-color: #1890ff; border-color: #1890ff; box-shadow: 0 2px 0 rgba(0, 0, 0, .035) }
+.pz-form .pz-form-item .pz-submit-btn:hover { background-color: #40a9ff; border-color: #40a9ff; }
+.pz-form .pz-form-item .pz-cancel-btn:hover { color: #40a9ff; border-color: #40a9ff; }
+
+.pz-form .pz-form-item input.code { width: 120px; }
+.pz-form .pz-form-item .msgcode { display: inline-block; margin-left: 10px; width: 70px; line-height: 28px; font-size: 14px; border: 1px solid #d9d9d9; background-color: #fafafa; text-align: center; cursor: pointer; }
