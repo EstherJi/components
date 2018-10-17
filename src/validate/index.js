@@ -104,6 +104,11 @@ Validate.prototype = {
         return index;
     },
 
+    setPattern: function(id, pattern){
+        var index = this.__getObjIndex(id);
+        this.eles[index].pattern = pattern;
+    },
+
     check: function(id){
         var index = this.__getObjIndex(id),
             result = this.__validate(index);

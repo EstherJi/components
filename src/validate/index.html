@@ -62,6 +62,9 @@
             $('.pz-cancel-btn').on('click', function(){
                 pzFrom.resetFields();
             })
+
+            // 单独设置某个输入框的正则校验
+            pzFrom.setPattern('code', /^\d{6}$/)
         </script>
     </body>
 </html>
