@@ -85,7 +85,7 @@
 
             for(var i = 0; i < len; i++){
                 dropdownItemEl[i].index = i;
-                dropdownItemEl[i].addEventListener('click', function(e){ 
+                dropdownItemEl[i].addEventListener('mousedown', function(e){ 
                     e.stopPropagation();
                     if(self.selectIndex[index] !== -1){
                         dropdownItemEl[self.selectIndex[index]].classList.remove(dropdownItemSelectedClass);  

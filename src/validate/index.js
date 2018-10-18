@@ -51,7 +51,7 @@ Validate.prototype = {
         if(this.option.blurCheck){
             $.each(this.eles, function(index, val){
                 val.obj.on('blur', function(){
-                    self.__validate(index)
+                    self.__validate(index);
                 })
             })
         }
@@ -63,8 +63,6 @@ Validate.prototype = {
         var target = this.eles[index],
             targetVal = target.obj.val(),
             result = true;
-
-        console.info(target.obj.attr('data-value'))
 
         if(targetVal){
             if(target.recheck){
@@ -126,7 +124,7 @@ Validate.prototype = {
 
         $.each(this.eles, function(index, val){
             if(self.__validate(index)){
-                form[val.name] = val.obj.val();
+                form[val.name] = val.obj.hasClass('pz-select-input') ? val.obj.attr('data-value') : val.obj.val();
             }else{
                 result = false;
             }
