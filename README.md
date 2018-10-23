@@ -22,11 +22,11 @@
 
 // js 代码
 new Swiper().init({
-	ele: 'swiper-container',   // id
-	effect: 'scroll',         // 滑动效果，fade/scroll
-	isAuto: false,            // 是否自动轮播
-	direction: 'vertical',    // effect为scroll时选择，不写默认水平滚动
-	hasNavigation: true       // 是否显示左右箭头按钮
+	ele: 'swiper-container',       // id
+	effect: 'scroll',             // 滑动效果，fade/scroll
+	isAuto: false,            	 // 是否自动轮播
+	direction: 'vertical',    	// effect为scroll时选择，不写默认水平滚动
+	hasNavigation: true        // 是否显示左右箭头按钮
 })
 
 ```
@@ -61,9 +61,24 @@ var rules = {
 var pzForm = new Validate().init({
 	form: $('.form'),
 	rules: rules,
-	blurCheck: false,   // 输入框失去焦点是触发，默认true，可选
-	inputEl: '.valid',  // 输入框类，默认'.valid'，可选
-	errorTipClass: 'error-tip',   // 错误提示类名，可选
-	errorClass: 'has-error'      // 错误提示时添加到form-item上的类名，可选
+	blurCheck: false,   			 // 输入框失去焦点时触发，默认true，可选
+	inputEl: '.valid',  			// 输入框类，默认'.valid'，可选
+	errorTipClass: 'error-tip',    // 错误提示类名，可选
+	errorClass: 'has-error'       // 错误提示时添加到input上的类名，可选
+})
+```
+
+#### [Page分页](https://estherji.github.io/components/src/page/index.html)
+```
+new Page().init({
+    el: '.page',                      // 分页div容器，必须传参
+    totalCount: 124,                 //  总条数，必须传参
+    hasFLBtn: false,                // 是否显示首页、尾页按钮，默认false
+    hasPNBtn: true,                // 是否显示上一页、下一页按钮，默认true
+    showPageCount: 5,             // 连续显示页码个数，默认5
+    pageSize: 10,                // 每页显示条数，默认10条 
+    jump: function(pageNo){
+        console.info(pageNo);   // 返回当前页码，可ajax刷新加载，也可整页跳转
+    }
 })
 ```

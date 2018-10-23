@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Page</title>
+    </head>
+    <style>
+        * { margin: 0; padding: 0; }
+        .page { margin: 20px; }
+        .page a { display: inline-block; padding: 3px 6px; color: #666; border: 1px solid #eee; text-decoration: none; cursor: pointer; }
+        .page a.cur, .page a:hover { background-color: #b17e47; border-color: #b17e47; color: #fff; }
+        .page a.disable { color: #999; border-color: #e5e5e5; background-color: #fff; }
+        .page span { padding: 0 6px; }
+    </style>
+    <body>
+        <div class="page"></div>
+
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="index.js"></script>
+
+        <script>
+            new Page().init({
+                el: '.page',
+                totalCount: 124,
+                jump: function(pageNo){
+                    console.info(pageNo);   // 返回当前页码
+                }
+            })
+        </script>
+    </body>
+</html>
