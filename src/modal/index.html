@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modal</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <div class="container">
+            <a class="btn info-btn">提示框</a>
+            <a class="btn confirm-btn">确认框</a>
+        </div>
+
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="index.js"></script>
+
+        <script>
+            $('.info-btn').on('click', function(){
+                new Modal({
+                    type: 'info',
+                    content: '这是一段测试信息'
+                })
+            })
+
+            $('.confirm-btn').on('click', function(){
+                new Modal({
+                    type: 'confirm',
+                    title: '确认提示',
+                    content: '这是一段测试提示',
+                    onInit: function(self){
+                        // 初始化调用函数，返回当前弹框对象
+                    },
+                    onConfirm: function(self){
+                        // 确定时回调函数，返回当前弹框对象
+                        console.info(self)
+                    },
+                    onCancel: function(self){
+                        // 取消时回调函数，返回当前弹框对象
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

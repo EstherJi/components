@@ -82,3 +82,29 @@ new Page().init({
     }
 })
 ```
+
+#### [Modal弹框](https://estherji.github.io/components/src/modal/index.html)
+```
+var confirmModal = new Modal({
+    type: 'confirm',                 // 弹框类型，默认info，可选confirm
+    title: '提示',                  // 标题，可传html结构或string，不传默认显示'提示'
+    content: '',                   // 弹框内容，可传html结构或string
+    confirmText: '确定',          // 不传默认显示'确定'
+    cancelText: '取消',          // 不传默认显示'取消'，info类型不显示
+    width: '500px',             // 弹框宽度，默认500px，string类型
+    closable: true,            // 是否自动触发弹框关闭，设为false时，须调用self.close()触发弹框关闭
+    maskClosable: false,      // 点击遮罩是否可关闭，不传默认false
+    hasCloseIcon: false,     // 是否显示右上角关闭按钮，不传默认false
+    wrapClassName: '',      // 对话框容器类名，不传默认'pz-modal-wrap'
+    footer: true,          // 是否显示底部按钮
+    onInit: function(self){
+        // 初始化调用函数，返回当前弹框对象
+    },
+    onConfirm: function(self){
+        // 确定时回调函数，返回当前弹框对象，closable为false时，调用self.close()触发弹框关闭
+    },
+    onCancel: function(self){
+        // 取消时回调函数，返回当前弹框对象
+    }
+})
+```
