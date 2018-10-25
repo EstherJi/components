@@ -1,5 +1,5 @@
 
-var Page = function(){
+var Page = function(option){
     this.data = {
         el: null,
         pageNo: 1,
@@ -12,6 +12,8 @@ var Page = function(){
     }
 
     this.totalPage = 0;
+
+    this.init(option);
 }
 
 Page.prototype = {

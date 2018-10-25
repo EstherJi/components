@@ -1,5 +1,5 @@
 
-var Validate = function(){
+var Validate = function(data){
     this.option = {
         form: null,
         rules: null,
@@ -16,6 +16,8 @@ var Validate = function(){
         code: /^\d{4}$/,
         password: /^[0-9A-Za-z]{6,16}$/
     };
+
+    this.init(data);
 }
 
 Validate.prototype = {

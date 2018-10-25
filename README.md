@@ -58,19 +58,19 @@ var rules = {
 	name: { nullMsg: '', errorMsg: '', pattern: '' }    
 }
 
-var pzForm = new Validate().init({
-	form: $('.form'),
-	rules: rules,
-	blurCheck: false,   			 // 输入框失去焦点时触发，默认true，可选
-	inputEl: '.valid',  			// 输入框类，默认'.valid'，可选
-	errorTipClass: 'error-tip',    // 错误提示类名，可选
-	errorClass: 'has-error'       // 错误提示时添加到input上的类名，可选
+var pzForm = new Validate({
+    form: $('.form'),
+    rules: rules,
+    blurCheck: false,                // 输入框失去焦点时触发，默认true，可选
+    inputEl: '.valid',              // 输入框类，默认'.valid'，可选
+    errorTipClass: 'error-tip',    // 错误提示类名，可选
+    errorClass: 'has-error'       // 错误提示时添加到input上的类名，可选
 })
 ```
 
 #### [Page分页](https://estherji.github.io/components/src/page/index.html)
 ```
-new Page().init({
+new Page({
     el: '.page',                      // 分页div容器，必须传参
     totalCount: 124,                 //  总条数，必须传参
     hasFLBtn: false,                // 是否显示首页、尾页按钮，默认false
@@ -95,7 +95,7 @@ var confirmModal = new Modal({
     closable: true,            // 是否自动触发弹框关闭，设为false时，须调用self.close()触发弹框关闭
     maskClosable: false,      // 点击遮罩是否可关闭，不传默认false
     hasCloseIcon: false,     // 是否显示右上角关闭按钮，不传默认false
-    wrapClassName: '',      // 对话框容器类名，不传默认'pz-modal-wrap'
+    wrapClassName: '',      // 对话框容器类名，传值会给'.pz-modal-wrap'容器添加该类名
     footer: true,          // 是否显示底部按钮
     onInit: function(self){
         // 初始化调用函数，返回当前弹框对象
