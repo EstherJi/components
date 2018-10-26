@@ -12,6 +12,7 @@ var Modal = function(option){
         hasCloseIcon: false,    // 是否显示右上角关闭按钮
         wrapClassName: '',     // 对话框外层容器类名
         footer: true,         // 是否显示底部按钮
+        dragable: false,     // 是否可拖拽
         onInit: '',
         onConfirm: '',
         onCancel: ''
@@ -21,6 +22,13 @@ var Modal = function(option){
     this.pzWrap = $('<div class="pz-modal-wrap"></div>');
     this.pzClose = $('<i class="pz-modal-close"></i>');
     this.pzWrapFooter = $('<div class="pz-modal-footer"></div>');
+
+    this.dragData = {
+        disX: 0,        
+        disY: 0, 
+        left: 0,
+        top: 0
+    };
 
     this.init(option);
 }
@@ -69,6 +77,10 @@ Modal.prototype = {
         this.data.onInit && this.data.onInit(this);
         $('body').append(this.pzMask, this.pzWrap);
 
+        if(this.data.dragable){
+            this.__drag();
+        }
+
         return this;
     },
 
@@ -101,5 +113,47 @@ Modal.prototype = {
     close: function(){
         this.pzMask.remove();
         this.pzWrap.remove();
+    },
+
+    __drag: function(){
+        var self = this,
+            flag = false,
+            winHeight = $(window).height(),
+            winWidth = $(window).width();
+
+        this.pzWrap.css('cursor', 'move');
+
+        this.pzWrap.on('mousedown', function(e){
+            self.dragData.disX = e.pageX - self.pzWrap.offset().left;
+            self.dragData.disY = e.pageY - self.pzWrap.offset().top;
+            flag = true;
+        });
+
+        $(document).on('mousemove', function(e){
+            if(flag){
+                self.dragData.left = e.pageX - self.dragData.disX;
+                self.dragData.top = e.pageY - self.dragData.disY;
+
+                if(self.dragData.left < 0){
+                    self.dragData.left = 0;
+                }else if(self.dragData.left > winWidth - self.pzWrap.width()){
+                    self.dragData.left = winWidth - self.pzWrap.width();
+                }
+
+                if(self.dragData.top < 0){
+                    self.dragData.top = 0;
+                }else if(self.dragData.top > winHeight - self.pzWrap.height()){
+                    self.dragData.top = winHeight - self.pzWrap.height();
+                }
+
+                self.pzWrap.css({
+                    transform: 'translate(0, 0)',
+                    left: self.dragData.left + 'px',
+                    top: self.dragData.top + 'px'
+                })
+            }
+        }).on('mouseup', function(){
+            flag = false;
+        })
     }
 }
