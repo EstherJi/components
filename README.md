@@ -97,6 +97,7 @@ var confirmModal = new Modal({
     hasCloseIcon: false,     // 是否显示右上角关闭按钮，不传默认false
     wrapClassName: '',      // 对话框容器类名，传值会给'.pz-modal-wrap'容器添加该类名
     footer: true,          // 是否显示底部按钮
+    dragable: false,      // 是否可拖拽，默认false
     onInit: function(self){
         // 初始化调用函数，返回当前弹框对象
     },

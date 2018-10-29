@@ -118,12 +118,12 @@ Modal.prototype = {
     __drag: function(){
         var self = this,
             flag = false,
-            winHeight = $(window).height(),
-            winWidth = $(window).width();
+            winHeight = window.innerHeight,
+            winWidth = window.innerWidth;
 
-        this.pzWrap.css('cursor', 'move');
+        this.pzWrap.find('.pz-modal-header').css('cursor', 'move');
 
-        this.pzWrap.on('mousedown', function(e){
+        this.pzWrap.find('.pz-modal-header').on('mousedown', function(e){
             self.dragData.disX = e.pageX - self.pzWrap.offset().left;
             self.dragData.disY = e.pageY - self.pzWrap.offset().top;
             flag = true;
@@ -154,6 +154,6 @@ Modal.prototype = {
             }
         }).on('mouseup', function(){
             flag = false;
-        })
+        });
     }
 }
