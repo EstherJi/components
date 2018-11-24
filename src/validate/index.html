@@ -33,11 +33,6 @@
                 <div class="pz-select">
                     <input type="text" class="pz-select-input valid" id="city" prop="city" readonly>
                     <span class="arrow"></span>
-                    <ul class="pz-select-dropdown">
-                        <li class="pz-select-dropdown-item" data-value="SZ">深圳</li>
-                        <li class="pz-select-dropdown-item" data-value="DG">东莞</li>
-                        <li class="pz-select-dropdown-item" data-value="GZ">广州</li>
-                    </ul>
                 </div>
             </div>
             <div class="pz-form-item">
@@ -51,6 +46,24 @@
         <script src="index.js"></script>
 
         <script>
+            new Select({
+                el: '.pz-select',
+                values: [
+                    {
+                        value: 'SZ',
+                        label: 'shenzhen'
+                    },
+                    {
+                        value: 'DG',
+                        label: 'dongguan'
+                    },
+                    {
+                        value: 'GZ',
+                        label: 'guangzhou'
+                    }
+                ]
+            })
+
             var rules = {
                 name: { nullMsg: '姓名不能为空', errorMsg: '姓名格式错误', pattern: /^[a-zA-Z\u4e00-\u9fa5]{1,10}$/ },
                 mobile: { nullMsg: '手机号码不能为空', errorMsg: '手机号码格式错误' },

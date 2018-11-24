@@ -1,109 +1,73 @@
-(function(){
-    var Select = function(){
-        this.data = {
-            elClass: 'pz-select',
-            inputElClass: 'pz-select-input',
-            dropdownClass: 'pz-select-dropdown',
-            dropdownItemClass: 'pz-select-dropdown-item',
-            dropdownItemSelectedClass: 'pz-select-dropdown-item-selected',
-            activeClass: 'pz-active',
 
-            showSearch: false,
-            onSearch: null     // showSearch设置为true时的回调函数，返回当前input对象
-        }
+var Select = function(option){
+	this.data = {
+		el: '',
+		defaultValue: '',
+		values: [],
+		canSearch: false,
+		searchEvent: null,
+		onChange: null
+	}
 
-        this.selectIndex = [];
-    }
+	this.dropdownEl = $('<ul class="pz-select-dropdown"></ul>');
+	this.defaultText = '';
 
-    Select.prototype = {
-        constructor: Select,
+	this.init(option);
+}
 
-        init: function(option){
-            var self = this;
+Select.prototype = {
+	constructor: Select,
 
-            if(option){
-                for(var key in option){
-                    this.data[key] = option[key];
-                }
-            }
+	init: function(option){
+		var self = this;
 
-            var els = document.getElementsByClassName(this.data.elClass),
-                num = els.length;
-            for(var i = 0; i < num; i++){
-                var inputEl = els[i].getElementsByClassName(this.data.inputElClass)[0],
-                    dropdownEl = els[i].getElementsByClassName(this.data.dropdownClass)[0],
-                    dropdownItemEl = dropdownEl.getElementsByClassName(this.data.dropdownItemClass);
-                inputEl.index = i;
+		if(!option) return;
 
-                if(this.data.showSearch){
-                    this.__canSearch(inputEl);
-                }
+		for(var key in option){
+			this.data[key] = option[key];
+		}
+		
+		var values = this.data.values,
+			inputEl = $(this.data.el).find('.pz-select-input');
 
-                if(dropdownEl.getElementsByClassName(this.data.dropdownItemSelectedClass)[0]){
-                    var dropdownItemSelectedEl = dropdownEl.getElementsByClassName(this.data.dropdownItemSelectedClass)[0];
-                    this.__appendText(inputEl, dropdownItemSelectedEl);
-                    this.__findIndex(i, dropdownItemEl);
-                }else{
-                    this.selectIndex[i] = -1;
-                }      
+		for(var i = 0; i < values.length; i++){
+			var selectedClass = '';
+			if(this.data.defaultValue === values[i].value){
+				this.defaultText = values[i].label;
+				selectedClass = ' pz-select-dropdown-item-selected';
+			}
 
-                inputEl.addEventListener('click', function(e){
-                    e.stopPropagation();
-                    var _this = this,
-                        dropdownItemEl = els[this.index].getElementsByClassName(self.data.dropdownClass)[0].getElementsByClassName(self.data.dropdownItemClass);
-                    this.classList.add(self.data.activeClass);
-                    self.__dropdownClick(this, this.index, dropdownItemEl);
+			var _li = $('<li class="pz-select-dropdown-item' + selectedClass + '" data-value="' + values[i].value + '">' + values[i].label + '</li>')
+			this.dropdownEl.append(_li);
+		}
+		$(this.data.el).append(this.dropdownEl);
 
-                    document.addEventListener('click', function(e){
-                        _this.classList.remove(self.data.activeClass);
-                    })
-                });
-            }
+		inputEl.val(this.defaultText).attr('data-value', this.data.defaultValue).on('click', function(e){
+			e.stopPropagation();
+			$(this).addClass('pz-active');
+			self.__dropdownEvent();
+		});
 
-            return this;
-        },
+		if(this.data.canSearch){
+			inputEl.removeAttr('readonly');
+			this.data.searchEvent && this.data.searchEvent(inputEl.attr('data-value'));
+		}
 
-        __findIndex: function(index, dropdownItemEl){
-            for(var i = 0; i < dropdownItemEl.length; i++){
-                if(dropdownItemEl[i].classList.contains(this.data.dropdownItemSelectedClass)){
-                    this.selectIndex[index] = i;
-                }
-            }
-        },
+		$(document).on('click', function(){
+			inputEl.removeClass('pz-active');
+		})
+	},
 
-        __appendText: function(inputEl, dropdownItemSelectedEl){
-            var selected = dropdownItemSelectedEl.textContent,
-                dataValue = dropdownItemSelectedEl.getAttribute('data-value');
-            inputEl.value = selected;
-            inputEl.setAttribute('data-value', dataValue);
-        },
+	__dropdownEvent: function(){
+		var self = this;
 
-        __dropdownClick: function(inputEl, index, dropdownItemEl){
-            var self = this,
-                len = dropdownItemEl.length,
-                dropdownItemSelectedClass = self.data.dropdownItemSelectedClass;
+		this.dropdownEl.on('mousedown', '.pz-select-dropdown-item', function(e){
+			if(!$(this).hasClass('pz-select-dropdown-item-selected')){
+				$(this).addClass('pz-select-dropdown-item-selected').siblings().removeClass('pz-select-dropdown-item-selected');
+				$(this).parent().siblings('.pz-select-input').val($(this).text()).attr('data-value', $(this).attr('data-value'));
 
-            for(var i = 0; i < len; i++){
-                dropdownItemEl[i].index = i;
-                dropdownItemEl[i].addEventListener('mousedown', function(e){ 
-                    e.stopPropagation();
-                    if(self.selectIndex[index] !== -1){
-                        dropdownItemEl[self.selectIndex[index]].classList.remove(dropdownItemSelectedClass);  
-                    }                                                
-                    this.classList.add(dropdownItemSelectedClass);
-                    self.selectIndex[index] = this.index;
-                    inputEl.value = this.textContent;
-                    inputEl.setAttribute('data-value', this.getAttribute('data-value'));
-                    inputEl.classList.remove(self.data.activeClass);
-                })
-            }
-        },
-
-        __canSearch: function(inputEl){
-            inputEl.removeAttribute('readonly');
-            this.data.onSearch && this.data.onSearch(inputEl);
-        }
-    }
-
-    new Select().init()
-})()
+				self.data.onChange && self.data.onChange($(this).attr('data-value'));
+			}
+		})
+	}
+}

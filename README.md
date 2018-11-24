@@ -35,11 +35,30 @@ new Swiper().init({
 
 代码示例：
 ```
-new Select().init({
-	showSearch: true,  // 可选，默认false
-	onSearch: function(el){     // showSearch为true时使用，返回当前input对象
-		console.info(el)
-	}
+new Select({
+    el: '.pz-select',
+    values: [
+        {
+            value: 'SZ',
+            label: 'shenzhen'
+        },
+        {
+            value: 'DG',
+            label: 'dongguan'
+        },
+        {
+            value: 'GZ',
+            label: 'guangzhou'
+        }
+    ],
+    defaultValue: '',     // select默认选中的值，不传默认为空
+    canSearch: false,    // 是否可以搜索
+    searchEvent: function(val){     // canSearch为true时使用，返回当前输入框value
+        console.info(val);
+    },
+    onChange: function(val){       // option改变时触发，返回当前选中的option value
+        console.info(val);
+    }
 })
 ```
 
