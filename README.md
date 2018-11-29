@@ -128,3 +128,15 @@ var confirmModal = new Modal({
     }
 })
 ```
+
+#### [DatePicker日期选择]()https://estherji.github.io/components/src/datepicker/index.html
+```
+new DatePicker({
+    el: '.pz-datepicker',        // 元素
+    date: '',                   // 不填默认当前日期，格式yyyy-MM-dd
+    formatDateSymbol: '-',     // 日期显示连接符，默认'-'，可选'/'
+    className: '',            // 选择器className，会给el添加该类名
+    dropdownClassName: '',   // 添加到日期选择器的className
+    onChange: '',           // 点击日期回调
+})
+```

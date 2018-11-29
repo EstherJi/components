@@ -1,0 +1,32 @@
+
+* { margin: 0; padding: 0; }
+body { font: 14px/1.5 'Microsoft Yahei'; color: rgba(0, 0, 0, .65); }
+ul, li { list-style: none; }
+input, select { outline: none; }
+.container { margin: 20px auto; width: 500px; }
+
+.pz-datepicker { position: relative; }
+.pz-datepicker input { padding-left: 10px; width: 200px; height: 30px; border: 1px solid #d9d9d9; border-radius: 4px; font-size: 14px; }
+.pz-datepicker input:focus, .pz-datepicker input.active { border-color: #40a9ff; box-shadow: 0 0 0 2px rgba(24, 144, 255, .2); }
+
+.pz-datepicker-panel { position: absolute; left: 0; top: 100%; width: 250px; border-radius: 4px; border: 1px solid #fff; box-shadow: 0 2px 8px rgba(0, 0, 0, .15); }
+.pz-datepicker-hd { padding: 0 10px; height: 40px; line-height: 40px; border-bottom: 1px solid #e8e8e8; background-color: #fff; text-align: center; }
+.pz-datepicker-hd .prev-year, .pz-datepicker-hd .prev-month, .pz-datepicker-hd .next-year, .pz-datepicker-hd .next-month { display: inline-block; position: absolute; width: 15px; height: 40px; color: rgba(0, 0, 0, .35); cursor: pointer; }
+.pz-datepicker-hd .prev-year:after, .pz-datepicker-hd .prev-month:after, .pz-datepicker-hd .next-year:after, .pz-datepicker-hd .next-month:after { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.pz-datepicker-hd .prev-year { left: 10px; }
+.pz-datepicker-hd .prev-month { left: 40px; }
+.pz-datepicker-hd .next-month { right: 40px; }
+.pz-datepicker-hd .next-year { right: 10px; }
+.pz-datepicker-hd .prev-year:after { content: '<<'; }
+.pz-datepicker-hd .prev-month:after { content: '<'; }
+.pz-datepicker-hd .next-month:after { content: '>'; }
+.pz-datepicker-hd .next-year:after { content: '>>'; }
+.pz-datepicker-bd { padding: 10px; }
+.pz-datepicker-bd .week-hd, .pz-datepicker-bd .week-bd { display: flex; flex-wrap: wrap; text-align: center; }
+.pz-datepicker-bd .week-hd li, .pz-datepicker-bd .week-bd li { flex: 1; }
+.pz-datepicker-bd .week-bd li { padding: 5px 0; cursor: pointer; }
+.week-bd li.other-month { color: #999; }
+.week-bd li span { display: inline-block; width: 30px; height: 30px; line-height: 30px; border-radius: 50%; }
+.week-bd li.cur-month span:hover { background-color: #d1e9ff; }
+.week-bd li.cur-month span.cur-day { font-weight: 700; background-color: #d1e9ff; color: #1890ff; }
+.week-bd li.cur-month span.selected-day { background-color: #1890ff; color: #fff; }
