@@ -97,7 +97,7 @@ new Page({
     showPageCount: 5,             // 连续显示页码个数，默认5
     pageSize: 10,                // 每页显示条数，默认10条 
     jump: function(pageNo){
-        console.info(pageNo);   // 返回当前页码，可ajax刷新加载，也可整页跳转
+        console.info(pageNo);   // 返回当前页码
     }
 })
 ```
@@ -129,7 +129,7 @@ var confirmModal = new Modal({
 })
 ```
 
-#### [DatePicker日期选择]()https://estherji.github.io/components/src/datepicker/index.html
+#### [DatePicker日期选择](https://estherji.github.io/components/src/datepicker/index.html)
 ```
 new DatePicker({
     el: '.pz-datepicker',        // 元素
