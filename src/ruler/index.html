@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+		<title>ruler</title>
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div class="ruler-wrapper" id="ruler-wrapper"></div>
+		<p>当前数值：<span id="rulerValue"></span></p>
+
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="index.js"></script>
+
+		<script>
+			new Ruler({
+				wrapperId: '#ruler-wrapper',
+				callback: function(curValue){
+					$('#rulerValue').text(curValue);
+				}
+			})
+		</script>
+	</body>
+</html>

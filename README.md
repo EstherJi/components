@@ -140,3 +140,20 @@ new DatePicker({
     onChange: '',           // 点击日期回调
 })
 ```
+
+#### [Ruler游标卡尺](https://estherji.github.io/components/src/ruler/index.html)
+```
+new Ruler({
+    wrapperId: '',           // 容器id，必填
+    max: 10000,             // 默认最大值
+    min: 0,                // 默认最小值
+    minUnit: 100,         // 默认最小单位刻度
+    unitSet: 10,         // 默认单位刻度组
+    mult: 1,            // 默认单位刻度的倍数，最小为1，即每一刻度占10px
+    value: 100,        // 默认值  
+    callback: function(curValue){
+        // 返回当前游标的值
+        console.info(curValue);
+    }
+})
+```

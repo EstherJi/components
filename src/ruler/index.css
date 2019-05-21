@@ -1,0 +1,11 @@
+
+* { margin: 0; padding: 0; }
+.ruler-wrapper{ position: relative; margin-top: 20px; height: 40px; overflow: hidden; }
+.ruler-wrapper .ruler-scroller { position: absolute; display: flex; left: -10px; transition: all .3s; }
+.ruler-wrapper .ruler-scroller ul { position: relative; box-sizing: border-box; margin-top: 25px; height: 15px; border-right: 1px solid #ccc; border-bottom: 1px solid #ddd; }
+.ruler-wrapper .ruler-scroller ul:last-child { border-right: none; }
+.ruler-wrapper .ruler-scroller ul li { float: left; box-sizing: border-box; margin-top: 10px; height: 5px; border-right: 1px solid #ccc; }
+.ruler-wrapper .ruler-pointer { position: absolute; left: 50%; height: 40px; border-right: 1px solid #fab700; }
+.ruler-wrapper .size-no { display: block; position: absolute; top: 0; font-size: 12px; color: #ccc; text-align: center; }
+
+p { margin-top: 10px; }
